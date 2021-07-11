@@ -1,0 +1,74 @@
+﻿@model EntityLayer.Concrete.Author
+@{
+    ViewBag.Title = "AuthorEdit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="card p-2">
+            <div class="card-body">
+                <form class="form-group" method="post" enctype="multipart/form-data">
+                    <div class="row p-2">
+                        <div class="col-6">
+                            @Html.Label("Yazar Adı:")
+                            @Html.TextBoxFor(x => x.User.Name, new { @class = "form-control" })
+                            @Html.HiddenFor(x => x.id, new { @name = "AuthorID" })
+                        </div>
+                        <div class="col-6">
+                            @Html.Label("Yazar Soyadı:")
+                            @Html.TextBoxFor(x => x.User.Surname, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row p-2">
+                        <div class="col-12">
+                            @Html.Label("Resim Yolu")
+                            <input type="file" name="User.Image" />
+                            @Html.TextBoxFor(x=>x.User.Image,new { @readonly = "readonly" })
+                        </div>
+                    </div>
+                    <div class="row p-2">
+                        <div class="col-6">
+                            @Html.Label("Yazar Kategorisi")
+                            @Html.DropDownListFor(x => x.AuthorCategoryId, (List<SelectListItem>)ViewBag.authorcategoryvalue1, new { @class = "form-control" })
+                        </div>
+                        <div class="col-6">
+                            @Html.Label("Telefon Numarası")
+                            @Html.TextBoxFor(x => x.User.PhoneNumber, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row p-2">
+                        <div class="col-6">
+                            @Html.Label("Yazar Yetenekleri")
+                            @Html.TextBoxFor(x => x.User.ShortAbout, new { @class = "form-control" })
+                        </div>
+                        <div class="col-6">
+                            @Html.Label("Rolü")
+                            @Html.DropDownList("RoleId", (List<SelectListItem>)ViewBag.authorrolevalue1,"Seçiniz", new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row p-2">
+                        <div class="col-6">
+                            @Html.Label("E-mail Adresi")
+                            @Html.TextBoxFor(x => x.User.EmailAddress, new { @class = "form-control" })
+                        </div>
+                        <div class="col-6">
+                            @Html.Label("Şifre")
+                            @Html.TextBoxFor(x => x.User.Password, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 p-3">
+                            @Html.Label("Hakkında")
+                            @Html.TextAreaFor(x => x.User.About, 10, 40, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end pt-3">
+                        <button class=" btn btn-success"><i class="fas fa-save"></i> Kaydet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+

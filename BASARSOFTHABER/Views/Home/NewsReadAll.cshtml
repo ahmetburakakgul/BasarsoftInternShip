@@ -1,0 +1,14 @@
+﻿@model IEnumerable<EntityLayer.Concrete.News>
+@foreach (var item in Model)
+{
+    <figure class="mb-4">
+        <img class="img-fluid rounded" src="@Url.Content(String.Format(item.Image))" alt="Image" width="900" height="400" />
+    </figure>
+    <h4 class="fw-bold">@item.Subtitle</h4>
+    <section class="mb-5">
+        <p class="fs-5 mb-4">
+            @item.NewsContent
+        </p>
+    </section>
+}
+

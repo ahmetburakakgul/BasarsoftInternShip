@@ -1,0 +1,29 @@
+﻿@model BASARSOFTHABER.Models.HomeModel.HomeModel
+@{   
+    List<EntityLayer.Concrete.Category> categories = new List<EntityLayer.Concrete.Category>();
+    if (Model.Category != null)
+    {
+        categories.Add(Model.Category);
+        var parentcat = Model.Category.Category2;
+        while (parentcat != null)
+        {
+            categories.Add(parentcat);
+            parentcat = parentcat.Category2;
+        }
+    }
+}
+
+<nav class="navbar navbar-expand-md bg-light breadcrumb">
+    <a class="breadcrumb-item" href="@Url.Action("Index","Home",new { id = 0 })">Başarsoft Haber</a>
+    @for (int i = categories.Count - 1; i >= 0; i--)
+    {
+        if (i == 0)
+        {
+            <a class="breadcrumb-item active">@categories[i].CategoryName</a>
+        }
+        else
+        {
+            <a class="breadcrumb-item" href="@Url.Action("Index","Home",new { id=categories[i].id})">@categories[i].CategoryName</a>
+        }
+    }
+</nav>

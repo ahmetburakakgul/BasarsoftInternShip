@@ -1,0 +1,55 @@
+﻿@model IEnumerable<EntityLayer.Concrete.About>
+@{
+    ViewBag.Title = "UpdateAboutList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content p-3 pt-4">
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Hakkımızda Sayfa Düzenlemesi</h3>
+
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+            </div>
+        </div>
+        @using (Html.BeginForm("UpdateAbout", "About", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+
+            <div class="card-body">
+                @foreach (var item in Model)
+                {
+                    <div class="form-group">
+                        @*<label for="inputName">ID</label>*@
+                        <input hidden="hidden" type="text" name="id" class="form-control" value="@item.id">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName">Görsel 1</label>
+                        <input type="file" name="AboutImage1">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName">Görsel 2</label>
+                        <input type="file" name="AboutImage2">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputDescription">Açıklama 1</label>
+                        <textarea name="AboutContent1" class="form-control" rows="4">@item.AboutContent1</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputDescription">Açıklama 2</label>
+                        <textarea name="AboutContent2" class="form-control" rows="4">@item.AboutContent2</textarea>
+                    </div>
+
+                    <div class="form-group d-flex justify-content-end">
+                        <button class="btn btn-success"> Güncelle</button>
+                    </div>
+
+                }
+            </div>
+        }
+        <!-- /.card-body -->
+    </div>
+</section>
+

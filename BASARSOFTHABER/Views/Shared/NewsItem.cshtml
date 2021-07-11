@@ -1,0 +1,41 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model EntityLayer.Concrete.News
+
+
+<div class="col-lg-4 mb-5">
+    <div class="card h-100 shadow border-0">
+
+        <img class="card-img-top" src="@Url.Content(String.Format(Model.Image))" alt="Image" width="330" height="190" />
+        <div class="card-body p-4">
+            <div class="badge bg-danger bg-gradient rounded-pill mb-2">
+                @Model.Category.CategoryName
+            </div>
+            <a class="text-decoration-none link-dark stretched-link" href="/Home/NewsDetails/@Model.id">
+                <h5 class="card-title mb-3">@Model.NewsName</h5>
+            </a>
+            <p class="card-text mb-0">@Model.NewsContent.Substring(0, Model.NewsContent.Substring(0, 200).LastIndexOf(" ")) ...</p>
+            <h7 style="color:red">Devamını Oku</h7>
+            <hr />
+            <div class="card-footer p-0 pt-2 bg-transparent border-top-0">
+                <div class="d-flex align-items-end bottom-0">
+                    <div class="d-flex align-items-center">
+                        <img class="rounded-circle me-3" src="@Url.Content(String.Format(Model.Author.User.Image))" alt="Image" width="50" height="50" />
+                        <div class="small">
+                            <div class="fw-bold">
+                                @Model.Author.User.Name @Model.Author.User.Surname
+                            </div>
+                            <div class="text-muted">
+                                @(((DateTime)Model.PublicationDate).ToString("dd-MMM-yyyy"))
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+@*<nav aria-label="...">
+        @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.PageNumbersOnly)
+    </nav>*@

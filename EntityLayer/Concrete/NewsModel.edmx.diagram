@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="163a099d708d4bfe86713ea72b9528b6" Name="Diagram1">
+        <EntityTypeShape EntityType="NewsDataBaseModel.About" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsDataBaseModel.Author" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsDataBaseModel.AuthorCategory" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsDataBaseModel.Category" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsDataBaseModel.Comment" Width="1.5" PointX="9.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsDataBaseModel.Contact" Width="1.5" PointX="9.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsDataBaseModel.Image" Width="1.5" PointX="9.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsDataBaseModel.News" Width="1.5" PointX="7.5" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsDataBaseModel.Role" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsDataBaseModel.SubscribeMail" Width="1.5" PointX="0.75" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsDataBaseModel.sysdiagram" Width="1.5" PointX="2.75" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsDataBaseModel.User" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <AssociationConnector Association="NewsDataBaseModel.FK_Author_AuthorCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="NewsDataBaseModel.FK_Author_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="NewsDataBaseModel.FK_News_Author" ManuallyRouted="false" />
+        <AssociationConnector Association="NewsDataBaseModel.FK_Category_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="NewsDataBaseModel.FK_News_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="NewsDataBaseModel.FK_Comment_News" ManuallyRouted="false" />
+        <AssociationConnector Association="NewsDataBaseModel.FK_Comment_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="NewsDataBaseModel.FK_Image_News" ManuallyRouted="false" />
+        <AssociationConnector Association="NewsDataBaseModel.FK_Users_Role" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,29 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Author>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="pt-lg-5 border-top-0" style="margin-bottom:52px">
+    <section class="py-5 bg-light">
+        <div class="container px-5 my-5">
+            <div class="text-center">
+                <h2 class="fw-bolder">Yazarlarımız</h2>
+                <p class="lead fw-normal text-muted mb-5">Sizlere Birbirinden Güzel İçerikler Hazırlayan ve Gündemdeki En Yeni Haberleri Sunan Yazar Arkadaşlarımız</p>
+            </div>
+            <div class="row gx-5 row-cols-1 row-cols-sm-2 row-cols-xl-4 justify-content-center">
+                @foreach (var item in Model)
+                {
+                    <div class="col mb-5 mb-5 mb-xl-0">
+                        <div class="text-center">
+                            <img class="img-fluid rounded-circle mb-4 px-4" src="@Url.Content(String.Format(item.User.Image))" alt="Image" height="246" width="246">
+                            <h5 class="fw-bolder">@item.User.Name @item.User.Surname</h5>
+                            <div class="fst-italic text-muted">@item.AuthorCategory.CategoryName</div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </section>
+</div>

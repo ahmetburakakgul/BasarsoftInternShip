@@ -1,0 +1,53 @@
+﻿@model EntityLayer.Concrete.News
+@{
+    ViewBag.Title = "UpdateNews";
+    Layout = "~/Views/Shared/_AuthorLayout.cshtml";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="card p-2">
+            <div class="card-body">
+                <form class="form-group" method="post">
+                    @Html.Label("Haber ID")
+                    @Html.TextBoxFor(x => x.id, new { @class = "form-control" })
+                    <br />
+                    <hr />
+                    @Html.Label("Haber Başlığı")
+                    @Html.TextBoxFor(x => x.NewsName, new { @class = "form-control" })
+                    <br />
+                    <hr />
+                    @Html.Label("Alt Başlık")
+                    @Html.TextBoxFor(x => x.Subtitle, new { @class = "form-control" })
+                    <br />
+                    <hr />
+                    @Html.Label("Kategori")
+                    @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.values, new { @class = "form-control" })
+                    <br />
+                    <hr />
+                    @Html.Label("Resim Yolu")<br />
+                    <input type="file" name="Image" />
+                    <br />
+                    <hr />
+                    @Html.Label("Tarih")
+                    @Html.TextBoxFor(x => x.ModifiedDate, new { @class = "form-control" })
+                    <br />
+                    <hr />
+                    @Html.Label("Yazar")
+                    @Html.DropDownListFor(x => x.AuthorId, (List<SelectListItem>)ViewBag.values2, new { @class = "form-control" })
+                    <br />
+                    <hr />
+                    @Html.Label("Haber İçreiği")
+                    @Html.TextAreaFor(x => x.NewsContent, 10, 40, new { @class = "form-control" })
+                    <hr />
+                    <div class="d-flex justify-content-end pt-3">
+                        <button class=" btn btn-success"><i class="fas fa-save"></i> Kaydet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+

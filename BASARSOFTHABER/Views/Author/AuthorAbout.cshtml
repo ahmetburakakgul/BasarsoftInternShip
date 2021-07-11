@@ -1,0 +1,16 @@
+﻿@model IEnumerable<EntityLayer.Concrete.News>
+@foreach (var item in Model)
+{
+    <div class="sidebar-box">
+        <div class="bio text-center">
+            <img src="@Url.Content(String.Format(item.Author.User.Image))" alt="Image Placeholder" class="rounded-circle mb-3" width="125" height="125">
+            <div class="bio-body">
+                <h2>@item.Author.User.Name @item.Author.User.Surname</h2>
+                <h4>@item.Author.AuthorCategory.CategoryName</h4>
+                <p class="mb-4">@item.Author.User.About</p>
+                <p><a href="~/Home/Index/" class="btn btn-outline-dark btn-sm rounded px-4 py-2"><i class="fa fa-home"> Ana Sayfaya Dön</i></a></p>
+            </div>
+        </div>
+    </div>
+}
+

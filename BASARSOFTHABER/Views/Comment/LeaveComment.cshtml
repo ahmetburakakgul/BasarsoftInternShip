@@ -1,0 +1,63 @@
+﻿
+<div class="card bg-light">
+    <div class="card-body">
+        <div class="comment-form-wrap pt-3">
+
+            <form method="post" class="p-3 bg-light">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="FullName" placeholder="İsim">
+                </div>
+                <br />
+                <div class="form-group">
+                    <input type="text" class="form-control" name="EmailAddress" placeholder="Mail adresiniz">
+                </div>
+                <br />
+                <input type="hidden" name="Date" value="@DateTime.Now.ToShortDateString()" />
+                <input type="hidden" name="NewsId" value="@ViewBag.id" />
+                <div class="form-group">
+                    <textarea name="CommentContent" cols="30" rows="10" class="form-control" placeholder="Yorumunuz"></textarea>
+                </div>
+                <br />                
+                <div class="form-group">
+                    <label for="message"><b>Puanınız: &nbsp;</b></label>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">@Html.RadioButton("NewsRating", 1, new { @class = "form-check-input" }) 1</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">@Html.RadioButton("NewsRating", 2, new { @class = "form-check-input" }) 2</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">@Html.RadioButton("NewsRating", 3, new { @class = "form-check-input" }) 3</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">@Html.RadioButton("NewsRating", 4, new { @class = "form-check-input" }) 4</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">@Html.RadioButton("NewsRating", 5, new { @class = "form-check-input" }) 5</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">@Html.RadioButton("NewsRating", 6, new { @class = "form-check-input" }) 6</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">@Html.RadioButton("NewsRating", 7, new { @class = "form-check-input" }) 7</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">@Html.RadioButton("NewsRating", 8, new { @class = "form-check-input" }) 8</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">@Html.RadioButton("NewsRating", 9, new { @class = "form-check-input" }) 9</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">@Html.RadioButton("NewsRating", 10, new { @class = "form-check-input" }) 10</label>
+                    </div>
+                </div>              
+                <br />
+                <div class="form-group">
+
+                    <button type="submit" class="btn btn-primary pull-right" name="leave">Yorum Yap</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

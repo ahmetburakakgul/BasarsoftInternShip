@@ -1,0 +1,101 @@
+﻿@model EntityLayer.Concrete.User
+@{
+    ViewBag.Title = "ProfileEdit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container pt-lg-5" style="margin-bottom:126px">
+    <div class="main-body">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        @using (Html.BeginForm("ProfileEdit", "UserMember", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="row mb-3">
+                                <div class="col-sm-3">
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    @Html.HiddenFor(x => x.id)
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm-1 text-lg-end">
+                                    <h6 class="mb-0">Profil Resmi :</h6>
+                                </div>
+                                <div class="col-md-10">
+                                    <input type="file" name="Image" />
+                                </div>
+                            </div>
+
+                            <hr />
+                            <div class="row mb-3">
+                                <div class="col-sm-1 text-center">
+                                    <h6 class="mb-0">Adı :</h6>
+                                </div>
+                                <div class="col-sm-11 text-secondary">
+                                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="row mb-3">
+                                <div class="col-sm-1 text-lg-center">
+                                    <h6 class="mb-0">Soyadı :</h6>
+                                </div>
+                                <div class="col-sm-11 text-secondary">
+                                    @Html.TextBoxFor(x => x.Surname, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="row mb-3">
+                                <div class="col-sm-1 text-lg-center">
+                                    <h6 class="mb-0">Email :</h6>
+                                </div>
+                                <div class="col-sm-11 text-secondary">
+                                    @Html.TextBoxFor(x => x.EmailAddress, new { @class = "form-control", @type = "email", @readonly = "readonly" })
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="row mb-3">
+                                <div class="col-sm-1 text-lg-center">
+                                    <h6 class="mb-0">Telefon :</h6>
+                                </div>
+                                <div class="col-sm-11 text-secondary">
+                                    @Html.TextBoxFor(x => x.PhoneNumber, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="row mb-3">
+                                <div class="col-sm-1 text-lg-center">
+                                    <h6 class="mb-0">Hakkımda :</h6>
+                                </div>
+                                <div class="col-sm-11 text-secondary">
+                                    @Html.TextAreaFor(x => x.About, 3, 40, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="row mb-3 password_match">
+                                <div class="col-sm-1 text-lg-center">
+                                    <h6 class="mb-0">Şifre :</h6>
+                                </div>
+                                <div class="col-sm-11 text-secondary">
+                                    @Html.TextBoxFor(x => x.Password, new { @class = "form-control", @name = "pass1" })
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="row">
+                                <div class="col-sm-1 ">
+                                </div>
+                                <div class="col-sm-11 d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-outline-danger"><i class="fa fa-save"></i> Güncelle</button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

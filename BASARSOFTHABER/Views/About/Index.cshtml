@@ -1,0 +1,43 @@
+﻿@model IEnumerable<EntityLayer.Concrete.About>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="pt-lg-3 border-top-0" style="margin-bottom:20px">
+    <section class="py-5 bg-light" id="scroll-target">
+        <div class="container px-5 my-5">
+            <div class="row gx-5 align-items-center">
+                @foreach (var item in Model)
+                {
+                    <div class="col-lg-6">
+                        <img class="img-fluid rounded mb-5 mb-lg-0" src="@Url.Content(String.Format(item.AboutImage1))" alt="Image">
+                    </div>
+                    <div class="col-lg-6">
+                        <h2 class="fw-bolder">Hakkımızda</h2>
+                        <p class="lead fw-normal text-muted mb-0">@item.AboutContent1</p>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+</div>
+<div class="pt-3 border-top-0" style="margin-bottom:20px">
+    <section class="py-5 bg-light">
+        <div class="container px-5 my-5">
+            <div class="row gx-5 align-items-center">
+                @foreach (var item in Model)
+                {
+                    <div class="col-lg-6 order-first order-lg-last">
+                        <img class="img-fluid rounded mb-5 mb-lg-0" src="@Url.Content(String.Format(item.AboutImage2))" alt="Image">
+                    </div>
+                    <div class="col-lg-6">
+                        <h2 class="fw-bolder">Biz Kimiz?</h2>
+                        <p class="lead fw-normal text-muted mb-0">@item.AboutContent2</p>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+</div>
+

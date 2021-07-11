@@ -1,0 +1,75 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Giriş Yap</title>
+    <link rel="icon" href="~/icon/basarsofthaber.png" />
+
+    <!-- CSS Styles -->
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/font-awesome.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/PagedList.css")" rel="stylesheet" />
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital@0;1&display=swap" rel="stylesheet">
+
+    <!-- Javascripts -->
+    <script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery-3.6.0.min.js")"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row my-5">
+            <div class="col-lg-4 offset-md-4 my-5 pt-5">
+                @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+                {
+                    <div class="card card-default shadow-5-strong">
+                        <div class="card-header text-center p-4">
+                            <h2><b><i class="fa fa-sign-in"></i> Giriş Yap</b></h2>
+                        </div>
+                        <div class="card-body">
+
+                            <div class="form-outline form-white mb-4">
+                                <input type="email" class="form-control" name="EmailAddress" placeholder="Mail Adresinizi Girin." />
+                            </div>
+                            <div class="form-outline form-white mb-4">
+                                <input type="password" class="form-control" name="Password" placeholder="Şifrenizi Girin." />
+                            </div>
+                            <div class="row">
+                                <div class="col d-flex justify-content-start">
+                                    <!-- Checkbox -->
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="form1Example3" checked="">
+                                        <label class="form-check-label" for="form1Example3">
+                                            Beni Hatırla
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col text-end">
+                                    <a href="#"> Şifremi Unuttum?</a>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="card-footer p-4">
+                            <a href="~/Register/Register/" class="btn btn-primary form-control">
+                                <span class="fa fa-plus-square mr-2"></span> Kayıt Ol
+                            </a>
+                            <div class="pt-2">
+                                <button type="submit" class="btn btn-success form-control" st><i class="fa fa-sign-in"></i> Giriş Yap</button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</body>
+</html>

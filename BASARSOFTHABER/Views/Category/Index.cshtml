@@ -1,0 +1,58 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Category>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="card">           
+            <div class="card-body p-2">
+                <table class="table table-striped projects">
+                    <thead>
+                        <tr>
+                            <th style="width: 1%"></th>
+                            <th style="width: 10%">Kategori Adı</th>
+                            <th style="width: 10%">Üst Kategorisi</th>
+                            <th style="width: 5%">Tarih</th>
+                            <th style="width: 10%"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td></td>
+                                <td> @Html.DisplayFor(modelItem => item.CategoryName)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Category2.CategoryName)</td>
+                                <td>@(((DateTime)item.CreationDate).ToString("dd-MMM-yyyy"))</td>
+                                <td class="project-actions text-right">
+                                    <a class="btn btn-dark btn-sm" href="~/Category/Edit/@item.id"><i class="fas fa-edit"></i></a>
+                                    <a class="btn btn-danger btn-sm" onclick="DeleteProduct('@Url.Action("DeleteCategory",new { id = item.id })')"><i class="fas fa-trash"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="footer pt-1">
+                <div class="row">
+                    <div class="d-flex justify-content-end  col-lg-12 col-md-12 col-sm-12 col-xs-12 p-lg-4">
+                        <div class="dataTables_info">
+                            <a class="btn btn-outline-dark" href="~/Category/Edit/"><i class="fas fa-plus"></i> Yeni Kategori Oluştur</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<script>
+    function DeleteProduct(url) {
+        if (confirm("Silmek istediğine Emin Misin?")) {
+            location.href = url;
+        }
+    }
+</script>

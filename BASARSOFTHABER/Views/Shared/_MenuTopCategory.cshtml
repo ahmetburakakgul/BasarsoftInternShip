@@ -1,0 +1,19 @@
+﻿@model List<EntityLayer.Concrete.Category>
+<ul class="navbar-nav">
+    @foreach (var cat in Model)
+        {
+            if (cat.Category1.Any())
+            {
+            <li class="nav-item dropdown">
+                <a class="nav-link  dropdown-toggle" data-bs-toggle="dropdown" href="@Url.Action("Index","Home",new { id=cat.id})">@cat.CategoryName</a>
+                @_MenuHelper.MenuRecursive(cat.Category1.ToList())
+
+            </li>
+        }
+        else
+        {
+            <li class="nav-item"><a class="nav-link"  href="@Url.Action("Index","Home",new { id=cat.id})">@cat.CategoryName</a></li>
+        }
+
+    }
+</ul>

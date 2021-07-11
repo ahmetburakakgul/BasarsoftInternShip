@@ -1,0 +1,19 @@
+﻿@model IEnumerable<EntityLayer.Concrete.News>
+@foreach (var item in Model)
+{
+    <header class="mb-4">
+        <h1 class="fw-bolder mb-1">@item.NewsName</h1>
+        <div class="text-muted fst-italic mb-2">
+            <figure class="author-figure mb-0 mr-3 d-inline-block">
+                <img class="rounded-circle" src="@Url.Content(String.Format(item.Author.User.Image))" alt="Image" height="50" width="50"/>
+                <span class="d-inline-block mt-1"> @item.Author.User.Name @item.Author.User.Surname</span>
+                <span class="d-inline-block mt-1">  @(((DateTime)item.PublicationDate).ToString("dd-MMM-yyyy"))</span>
+            </figure>
+        </div>
+        <div class="text-muted fst-italic mb-2">
+            <a class="badge bg-danger text-decoration-none link-light">@item.Category.CategoryName</a>
+        </div>
+    </header>
+
+}
+

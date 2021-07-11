@@ -1,0 +1,29 @@
+﻿@model IEnumerable<EntityLayer.Concrete.News>
+<div>
+    <div class="card-header">
+        <div class="text-center">
+            <h4>Yazarın Diğer Haberleri</h4>
+        </div>
+    </div>
+   
+    <div class="card-body">
+        @foreach (var item in Model)
+        {
+            <div class="row" style="margin-top:9px">
+
+                <div class="col-2">
+                    <img src="@Url.Content(String.Format(item.Image))" width="75" height="75" />
+                </div>
+                <div class="col-9">
+                    <a href="~/Home/NewsDetails/@item.id" class="nav-link">
+                        <h4 style="color:black">@item.NewsName</h4>
+                        <span class="mr-2 pt-1" style="color:black"> @(((DateTime)item.PublicationDate).ToString("dd-MMM-yyyy")) </span>
+                    </a>
+                </div>
+
+
+            </div>
+        }
+        </div>
+    
+    </div>

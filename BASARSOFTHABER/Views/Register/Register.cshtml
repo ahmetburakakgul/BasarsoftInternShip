@@ -1,0 +1,83 @@
+﻿@model BASARSOFTHABER.Models.RegisterModel.RegisterModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Giriş Yap</title>
+    <link rel="icon" href="~/icon/basarsofthaber.png" />
+
+    <!-- CSS Styles -->
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/font-awesome.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/PagedList.css")" rel="stylesheet" />
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital@0;1&display=swap" rel="stylesheet">
+
+    <!-- Javascripts -->
+    <script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery-3.6.0.min.js")"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row my-5">
+            <div class="col-lg-4 offset-md-4 my-5 pt-5">
+                @using (Html.BeginForm())
+                {
+                    <div class="card card-default shadow-5-strong">
+                        <div class="card-header text-center p-4">
+                            <h2><b><i class="fa fa-plus-square"></i> Kayıt Ol</b></h2>
+                            @if (ViewBag.ReError != null && string.IsNullOrEmpty((string)ViewBag.ReError) == false)
+                            {
+                                <small style="color:red">@ViewBag.ReError</small>
+                            }
+                            else
+                            {
+                                <small>Lütfen e-posta ve şifrenizi giriniz.</small>
+                            }
+                        </div>
+                        <div class="card-body">
+                            <div class="form-outline form-white mb-4">
+                                @Html.TextBoxFor(model => model.User.Name, new { @class = "form-control", placeholder = "İsim Girin", type = "text", required = "required" })
+                            </div>
+                            <div class="form-outline form-white mb-4">
+                                @Html.TextBoxFor(model => model.User.Surname, new { @class = "form-control", placeholder = "Soyisim Girin", type = "text", required = "required" })
+                            </div>
+                            <div class="form-outline form-white mb-4">
+                                @Html.TextBoxFor(model => model.User.PhoneNumber, new { @class = "form-control", placeholder = "Telefon Numarası Girin", type = "text", required = "required" })
+
+                            </div>
+                            <div class="form-outline form-white mb-4">
+                                @Html.TextBoxFor(model => model.User.EmailAddress, new { @class = "form-control", placeholder = "Mail Adresiniz", type = "email", required = "required" })
+
+                            </div>
+                            <div class="form-outline form-white mb-4">
+                                @Html.TextBoxFor(model => model.User.Password, new { @class = "form-control", placeholder = "Şifre", type = "password", required = "required" })
+
+                            </div>
+                            <div class="form-outline form-white mb-4">
+                                @Html.TextBoxFor(model => model.RePasword, new { @class = "form-control", placeholder = "Şifre Tekrar", type = "password", required = "required" })
+
+                            </div>
+                        </div>
+                        <div class="card-footer p-4">
+                            <button type="submit" href="#" class="btn btn-success form-control">
+                                <span class="fa fa-plus-square mr-2"></span> Kayıt Ol
+                            </button>
+                            <div class="pt-2">
+                                <a href="~/Login/Login/" class="btn btn-primary form-control" st><i class="fa fa-sign-in"></i> Giriş Yap</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</body>
+</html>

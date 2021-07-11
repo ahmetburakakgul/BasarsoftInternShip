@@ -1,0 +1,88 @@
+﻿@{
+    Layout = null;
+    EntityLayer.Concrete.User logonuser = (EntityLayer.Concrete.User)Session["LogonUser"];
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Başarsoft Haber</title>
+    <link rel="icon" href="~/icon/basarsofthaber.png" />
+
+    <!-- CSS Styles -->
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/font-awesome.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/PagedList.css")" rel="stylesheet" />
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital@0;1&display=swap" rel="stylesheet">
+
+    <!-- Javascripts -->
+    <script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery-3.6.0.min.js")"></script>
+    <script src="~/Scripts/ControlPass.js"></script>
+</head>
+<body style="margin-bottom:0">
+    <div>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-danger">
+
+        </nav>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="@Url.Action("Index","Home",new { id=0 })"><img src="~/icon/basarsofthaber.png" width="45" height="45" />BAŞARSOFT HABER</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="main_nav">
+                    @Html.Partial("_MenuTopCategory", (List<EntityLayer.Concrete.Category>)ViewBag.MenuCategories)
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Index","Author")"> Yazarlar </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Index","About")"> Hakkımızda </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("SendMessage","Contact")"> İletişim </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-list-alt"></i></a>
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                                @if (User.IsInRole("Üye"))
+                                {
+                                    <li><a class="dropdown-item" href="@Url.Action("Profile","UserMember")"><i class="fa fa-user-circle-o"></i> Profil</a></li>
+                                    <li><a class="dropdown-item" href="@Url.Action("LogOut","Login")"><i class="fa fa-sign-out"></i> Çıkış Yap</a></li>
+                                }
+                                @if (logonuser == null)
+                                {
+                                    <li><a class="dropdown-item" href="@Url.Action("Register","Register")"><i class="fa fa-user-plus mr-2"></i> Kayıt Ol</a></li>
+                                    <li><a class="dropdown-item" href="@Url.Action("Login","Login")"><i class="fa fa-sign-in mr-2"></i> Giriş Yap</a></li>
+                                }
+                                @if (User.IsInRole("Yazar"))
+                                {
+                                    <li><a class="dropdown-item" href="@Url.Action("NewsList","UserAuthor")"><i class="fa fa-dashboard"></i> Yazar Panel</a></li>
+                                    <li><a class="dropdown-item" href="@Url.Action("LogOut","UserAuthor")"><i class="fa fa-sign-out"></i> Çıkış Yap</a></li>
+                                }
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <li><a class="dropdown-item" href="@Url.Action("AdminNewsList","Admin")"><i class="fa fa-dashboard"></i> Admin Panel</a></li>
+                                    <li><a class="dropdown-item" href="@Url.Action("LogOut","Login")"><i class="fa fa-sign-out"></i> Çıkış Yap</a></li>
+                                }
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main class="container">
+        @RenderBody()
+    </main>
+    @Html.Action("Footer", "About")
+</body>
+</html>

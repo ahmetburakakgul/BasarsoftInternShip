@@ -1,0 +1,98 @@
+﻿@model EntityLayer.Concrete.Category
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="card p-2">
+            <div class="card-body">
+                <form class="form-group" method="post">
+                    <div class="row p-2">
+                        <div class="col-12">
+                            @Html.Label("Kategori Adı:")
+                            @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row p-2">
+                        <div class="col-12">
+                            @Html.Label("Üst Kategori:")
+                            @Html.DropDownListFor(x => x.ParentId, (List<SelectListItem>)ViewBag.Categories, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row p-2">
+                        <div class="col-12">
+                            @Html.Label("Açıklama:")
+                            @Html.TextAreaFor(x => x.Description, 10, 40, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row p-2">
+                        <div class="col-6 d-flex justify-content-start pt-3">
+                            <a href="~/Category/Index/" class=" btn btn-warning"><i class="fas fa-arrow-left"></i> Listeye Dön</a>
+                        </div>
+                        <div class="col-6 d-flex justify-content-end pt-3">
+                            <button class=" btn btn-success"><i class="fas fa-save"></i> Kaydet</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+@*<section class="content-header">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-body">
+                    @using (Html.BeginForm("Category", "Edit", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.id)
+
+                            <div class="form-group">
+                                @Html.Label("Kategori Adı", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-12">
+                                    @Html.EditorFor(model => model.CategoryName, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.CategoryName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.Label("Üst Kategori", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-12">
+                                    @Html.DropDownList("ParentId", (List<SelectListItem>)ViewBag.Categories, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.ParentId, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.Label("Açıklama", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-12">
+                                    @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+                <div class="card-footer p-3">
+                    <div class="row">
+                        <div class="d-flex justify-content-start col-6 pl-4">
+                            <a href="~/Category/Index/" class="btn btn-warning"><i class="fas fa-long-arrow-alt-left"></i> Listeye Dön</a>
+                        </div>
+                        <div class="d-flex justify-content-end col-6 pr-4">
+                            <button class=" btn btn-success" type="submit"><i class="fas fa-save"></i> Kaydet</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>*@

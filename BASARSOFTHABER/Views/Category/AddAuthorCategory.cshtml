@@ -1,0 +1,31 @@
+﻿@model EntityLayer.Concrete.AuthorCategory
+@{
+    ViewBag.Title = "AddAuthorCategory";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="card p-2">
+            <div class="card-body">
+                <form class="form-group" method="post">
+                    <div class="row p-2">
+                        <div class="col-12">
+                            @Html.Label("Kategori Adı:")
+                            @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row p-2">
+                        <div class="col-6 d-flex justify-content-start pt-3">
+                            <a href="~/Category/AuthorCategoryIndex/" class=" btn btn-warning"><i class="fas fa-arrow-left"></i> Listeye Dön</a>
+                        </div>
+                        <div class="col-6 d-flex justify-content-end pt-3">
+                            <button class=" btn btn-success"><i class="fas fa-save"></i> Kaydet</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

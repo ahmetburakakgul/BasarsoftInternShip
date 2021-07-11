@@ -1,0 +1,32 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Comment>
+
+<div class="card bg-light">
+    @foreach (var item in Model)
+    {
+        <div class="card-body">
+
+            <div class="d-flex mb-0">
+                <!-- Parent comment-->
+
+                <div class="flex-shrink-0"><img class="rounded-circle" src="~/images/cuser.png" width="50" height="50" alt="Image"></div>
+                <div class="ms-3">
+                    <div class="fw-bold">
+                        @item.FullName 
+                        <h8 class="small">
+                            @(((DateTime)item.Date).ToString("dd-MMM-yyyy"))
+                        </h8>
+                    </div>
+                    
+                    @item.CommentContent
+                </div>
+
+            </div>
+
+
+        </div>
+    }
+</div>
+
+    <br />
+    <br />
+

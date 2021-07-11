@@ -1,0 +1,75 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model IEnumerable<EntityLayer.Concrete.Author>
+@{
+    ViewBag.Title = "AdminAuthorList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content p-2">
+    <!-- Default box -->
+    <div class="card card-solid">
+        <div class="card-header">
+            <h3 class="fw-bold text-black">Yazarlar</h3>
+        </div>
+        <div class="card-body pb-0">
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                        <div class="card bg-light d-flex flex-fill">
+                            <div class="card-header text-muted border-bottom-0">
+                                @item.AuthorCategory.CategoryName
+                            </div>
+                            <div class="card-body pt-0">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h2 class="lead"><b>@item.User.Name @item.User.Surname</b></h2>
+                                        <p class="text-muted text-sm"><b>Hakkında: </b> @item.User.ShortAbout </p>
+                                        <ul class="ml-4 mb-0 fa-ul text-muted">
+                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-mail-bulk"></i></span> Mail: @item.User.EmailAddress</li>
+                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Telefon #: + 90 - @item.User.PhoneNumber</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-5 text-center">
+                                        <img src="@Url.Content(String.Format(item.User.Image))" alt="user-avatar" class="img-circle img-fluid" width="95" height="95">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="text-right">
+                                    <a href="~/Admin/AuthorNewsList/@item.id" class="btn btn-sm bg-teal">
+                                        <i class="fas fa-newspaper"> Yazarın Haberleri</i>
+                                    </a>
+                                    <a href="~/Author/AuthorEdit/@item.id" class="btn btn-sm btn-primary">
+                                        <i class="fas fa-user"></i> Profili Düzenle
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer pt-1">
+            <div class="row">
+                <div class="d-flex col-lg-6 col-md-6 col-sm-12 col-xs-12 pl-5">
+                    @Html.PagedListPager((IPagedList)Model, page => Url.Action("AdminAuthorList", new { page }), PagedListRenderOptions.PageNumbersOnly)
+                </div>
+                <div class="d-flex justify-content-end  col-lg-6 col-md-6 col-sm-12 col-xs-12 p-lg-4">
+                    <div class="dataTables_info">
+                        <a href="~/Author/AddAuthor/" class=" btn btn-outline-dark"><i class="fas fa-user-plus"></i> Yeni Yazar Ekle</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+        <!-- /.card-footer -->
+    </div>
+    <!-- /.card -->
+
+</section>
+
+

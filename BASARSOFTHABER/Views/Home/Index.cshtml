@@ -1,0 +1,49 @@
+﻿@model BASARSOFTHABER.Models.HomeModel.HomeModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<EntityLayer.Concrete.Category> categories = new List<EntityLayer.Concrete.Category>();
+    if (Model.Category != null)
+    {
+        categories.Add(Model.Category);
+        var parentcat = Model.Category.Category2;
+        while (parentcat != null)
+        {
+            categories.Add(parentcat);
+            parentcat = parentcat.Category2;
+        }
+    }
+}
+<!--Slider Began-->
+<div class="row">
+    <div class="col-md-10 offset-md-1">
+        @Html.Action("FeatureSlideNews", "Home")
+    </div>
+</div>
+<!--Slider End-->
+<!--Breadcrumb Began-->
+<div class="row pt-2">
+    <div class="col-md-10 offset-md-1">
+        @Html.Partial("BreadCrumb")
+    </div>
+</div>
+<!--Breadcrumb End-->
+<!--Feature Began-->
+<div class="row">
+    <div class="col-md-10 offset-md-1">
+        @Html.Action("FeatureNews", "Home")
+    </div>
+</div>
+<!--Feature End-->
+<!--Content Began-->
+<div class="row">
+    <div class="col-md-10 offset-md-1">
+        <div class="row gx-5">
+            @foreach (var item in Model.News)
+            {
+                @Html.Partial("NewsItem", item)
+            }
+        </div>
+    </div>
+</div>
+<!--Content End-->

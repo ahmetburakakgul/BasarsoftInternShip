@@ -1,0 +1,20 @@
+﻿@helper MenuRecursive(List<EntityLayer.Concrete.Category> cats)
+{
+<ul class="dropdown-menu">
+    @foreach (var cat in cats)
+    {
+        if (cat.Category1.Any())
+        {
+            <li>
+                <a class="dropdown-item" href="~/Home/index/@cat.id">@cat.CategoryName</a>
+                @MenuRecursive(cat.Category1.ToList())
+            </li>
+        }
+        else
+        {
+            <li><a class="dropdown-item" href="~/Home/index/@cat.id">@cat.CategoryName </a></li>
+        }
+
+    }
+</ul>
+}
